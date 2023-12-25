@@ -4,7 +4,7 @@
     box-sizing: border-box
 }
 
-:root {
+ :root {
     --border-color: #D7DBE3;
     font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Open Sans', 'Helvetica Neue', sans-serif;
     --green: #0CD977;
@@ -104,7 +104,7 @@ h1 {
     overflow: hidden !important;
 }
 
-:root {
+ :root {
     --bg-main: #464646;
     --bg-card: #2D2727;
     --border-color: #efc745;
@@ -139,29 +139,6 @@ body {
     height: 100vh;
     background-color: var(--bg-main);
 }
-
-
-/* .card{
-    padding-top: 0;
-    margin-top: 0;
-    width: 12rem;
-    height: 7rem;
-    background-color: var(--bg-card);
-    background-size: contain;
-    border-radius: .6rem;
-    box-shadow: rgba(149,157,165,0.2) 0px 8px 24px;
-    padding: 2rem;
-} */
-
-
-/*
-.card_selected {
-    border: 2px solid yellow;
-} 
-
-.card_match{
-    border: 0.4rem solid purple;
-} */
 
 .card {
     position: relative;
@@ -208,11 +185,65 @@ body {
     background-color: var(--bg-card);
 }
 
-
-/*
-.card:hover{
+.card:hover {
     height: 103%;
     width: 103%;
-    border: outset var(--bg-card) ;
-} 
-*/
+    border: outset var(--bg-card);
+}
+
+@media only screen and (max-width: 572px) {
+    .card,
+    .back-card,
+    .front-card {
+        height: 3rem;
+        width: 5rem;
+    }
+    .front-card,
+    .back-card {
+        padding: 0.6rem;
+        font-size: 0.5rem;
+    }
+    h4 {
+        font-size: 1.2rem;
+    }
+}
+
+
+/* Add the previous media query for width less than 724px */
+
+@media only screen and (min-width: 573px) and (max-width: 724px) {
+    .card,
+    .back-card,
+    .front-card {
+        height: 4rem;
+        width: 6rem;
+    }
+    .front-card,
+    .back-card {
+        padding: 0.8rem;
+        font-size: 0.6rem;
+    }
+    h4 {
+        font-size: 1.5rem;
+    }
+}
+
+
+/* Add the previous media query for width less than 1045px */
+
+@media only screen and (min-width: 725px) and (max-width: 1045px) {
+    .card,
+    .back-card,
+    .front-card {
+        height: 5rem;
+        width: 8rem;
+    }
+    .front-card,
+    .back-card {
+        padding: 1rem;
+        font-size: 0.8rem;
+    }
+    h4 {
+        font-size: 2rem;
+    }
+}
