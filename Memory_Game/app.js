@@ -10,7 +10,7 @@ function runConfettiForTwoSeconds() {
 
         // Random animation-delay
         var randomAnimationDelay = Math.floor(Math.random() * 15);
-        console.log(randomAnimationDelay);
+        //console.log(randomAnimationDelay);
 
         // Random colors
         var colors = ['#0CD977', '#FF1C1C', '#FF93DE', '#5767ED', '#FFC61C', '#8497B0']
@@ -47,7 +47,7 @@ function runcont() {
 
         // Random animation-delay
         var randomAnimationDelay = Math.floor(Math.random() * 15);
-        console.log(randomAnimationDelay);
+        //console.log(randomAnimationDelay);
 
         // Random colors
         var colors = ['#0CD977', '#FF1C1C', '#FF93DE', '#5767ED', '#FFC61C', '#8497B0']
@@ -116,8 +116,8 @@ let cardsArray = [
 ];
 const parentDiv = document.querySelector('#card-section');
 const gamecard = cardsArray.concat(cardsArray)
-console.log("parent div")
-console.log(parentDiv)
+//console.log("parent div")
+//console.log(parentDiv)
 
 
 //stylinng the match card
