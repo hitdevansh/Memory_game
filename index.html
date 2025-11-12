@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory_Game_By_Devansh</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #new-game-btn {
+            background-color: #007bff;
+            /* Replace with your primary color */
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        #new-game-btn:hover {
+            background-color: #0056b3;
+            /* Replace with a slightly darker shade for hover effect */
+        }
+
+         #score,
+        #max-score {
+            font-weight: bold;
+        color: #00ff99;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h4 style="margin-top: 10%;">Match the of <span>Valorant Agent</span>
+        <p style="font-size:large;">Score: <span id="score">0</span>
+        <p style="font-size:large;">Max Score: <span id="max-score">0</span>
+        <button id="new-game-btn" style="margin: left 10%;">New Game</button></p>
+    </h4>
+
+    <section id="card-section">
+    </section>
+
+    <div id="confetti-wrapper"></div>
+    <script defer src="app.js"></script>
+
+    
+</body>
+
+
+<script type="module">
+    document.getElementById("new-game-btn").addEventListener("click", function() {
+        // Refresh the page on button click
+        location.reload();
+    });
+    
+    // Import Firebase SDK
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+
+    // ✅ Your Firebase config (keep this safe, but it’s fine to use client-side)
+    const firebaseConfig = {
+      apiKey: "AIzaSyABKZHPzj0hMgXdmo9Xm0oz1WY8Zy854zI",
+      authDomain: "valorant-project-4e715.firebaseapp.com",
+      databaseURL: "https://valorant-project-4e715-default-rtdb.firebaseio.com",
+      projectId: "valorant-project-4e715",
+      storageBucket: "valorant-project-4e715.firebasestorage.app",
+      messagingSenderId: "857147969847",
+      appId: "1:857147969847:web:cde0d7e1901662b7a40ab2",
+      measurementId: "G-ZSH7L5F4RH"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    // ✅ Fetch global max score
+    async function getMaxScore() {
+      const snapshot = await get(ref(db, "maxScore"));
+      if (snapshot.exists()) {
+        document.getElementById("max-score").textContent = snapshot.val();
+      }
+    }
+
+    // ✅ Update global max score if new one is higher
+    async function updateMaxScore(currentScore) {
+      const snapshot = await get(ref(db, "maxScore"));
+      const maxScore = snapshot.exists() ? snapshot.val() : 0;
+
+      if (currentScore > maxScore) {
+        await set(ref(db, "maxScore"), currentScore);
+        document.getElementById("max-score").textContent = currentScore + "%";
+      }
+    }
+
+    // Expose functions globally so app.js can use them
+    window.updateMaxScore = updateMaxScore;
+    window.getMaxScore = getMaxScore;
+
+    // Fetch max score once page loads
+    getMaxScore();
+</script>
+
+</html>
