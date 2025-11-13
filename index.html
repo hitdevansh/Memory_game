@@ -91,7 +91,7 @@
 
       if (currentScore > maxScore) {
         await set(ref(db, "maxScore"), currentScore);
-        document.getElementById("max-score").textContent = currentScore + "%";
+        document.getElementById("max-score").textContent = currentScore;
       }
     }
 
